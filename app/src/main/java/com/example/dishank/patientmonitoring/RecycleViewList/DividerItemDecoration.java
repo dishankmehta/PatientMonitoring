@@ -1,4 +1,4 @@
-package com.example.dishank.patientmonitoring;
+package com.example.dishank.patientmonitoring.RecycleViewList;
 
 import android.content.Context;
 import android.content.res.TypedArray;

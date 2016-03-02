@@ -1,4 +1,4 @@
-package com.example.dishank.patientmonitoring;
+package com.example.dishank.patientmonitoring.NavigationDrawer;
 
 /**
  * Created by Dishank on 2/3/2016.

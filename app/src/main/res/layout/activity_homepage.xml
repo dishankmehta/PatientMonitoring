@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3F51B5">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_margin="20dp">
+
+        <Button
+            android:id="@+id/admin"
+            android:background="#E8E8E8"
+            android:layout_marginTop="70dp"
+            android:focusable="true"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:text="Admin"
+            android:textColor="#FF6666"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            />
+
+        <Button
+            android:id="@+id/doctor"
+            android:background="#E8E8E8"
+            android:layout_below="@+id/admin"
+            android:layout_marginTop="50dp"
+            android:focusable="true"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:text="Doctor"
+            android:textColor="#FF6666"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            />
+
+        <Button
+            android:id="@+id/patient"
+            android:background="#E8E8E8"
+            android:layout_below="@+id/doctor"
+            android:layout_marginTop="50dp"
+            android:focusable="true"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:text="Patient"
+            android:textColor="#FF6666"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            />
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

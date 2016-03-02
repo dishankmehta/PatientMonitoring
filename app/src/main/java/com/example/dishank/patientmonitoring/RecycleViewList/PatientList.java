@@ -1,4 +1,4 @@
-package com.example.dishank.patientmonitoring;
+package com.example.dishank.patientmonitoring.RecycleViewList;
 
 /**
  * Created by Dishank on 1/30/2016.

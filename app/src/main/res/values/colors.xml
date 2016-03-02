@@ -8,4 +8,11 @@
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="WindowBackground">#000000</color>
     <color name="navigationBarColor">#000000</color>
+    <color name="bg_msg_you">#5eb964</color>
+    <color name="bg_msg_from">#e5e7eb</color>
+    <color name="title_gray">#434343</color>
+    <color name="lblFromName">#777777</color>
+    <color name="bg_msg_input">#e8e8e8</color>
+    <color name="text_msg_input">#626262</color>
+    <color name="bg_btn_join">#3F51B5</color>
 </resources>

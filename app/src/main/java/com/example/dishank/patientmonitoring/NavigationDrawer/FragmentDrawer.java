@@ -1,4 +1,4 @@
-package com.example.dishank.patientmonitoring;
+package com.example.dishank.patientmonitoring.NavigationDrawer;
 
 
 import android.content.Context;
@@ -14,7 +14,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
+import com.example.dishank.patientmonitoring.R;
 
 import java.util.ArrayList;
 import java.util.List;
