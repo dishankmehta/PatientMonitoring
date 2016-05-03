@@ -2,9 +2,11 @@ package com.example.dishank.patientmonitoring.NavigationFragment;
 
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -20,12 +22,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.dishank.patientmonitoring.NavigationDrawer.FragmentDrawer;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.dishank.patientmonitoring.CustomVolleyRequestQueue;
 import com.example.dishank.patientmonitoring.R;
 import com.example.dishank.patientmonitoring.RecycleViewList.DividerItemDecoration;
 import com.example.dishank.patientmonitoring.RecycleViewList.PatientAdapter;
 import com.example.dishank.patientmonitoring.RecycleViewList.PatientList;
 import com.example.dishank.patientmonitoring.TabMain;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,10 +50,18 @@ import java.util.List;
 public class PatientListFragment extends Fragment {
 
 
+    private static final String GET_DATA = "http://dmehta22.comli.com/get_list_data.php";
     private List<PatientList> patientlist = new ArrayList<>();
     private RecyclerView recyclerView;
     private PatientAdapter padapter;
     private Dialog dialog;
+    String doc_email;
+    String pname,pprob,pyear;
+    SharedPreferences pref;
+
+
+    private ProgressDialog pDialog;
+    private RequestQueue mQueue;
 
     public PatientListFragment() {
         // Required empty public constructor
@@ -51,9 +73,13 @@ public class PatientListFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.fragment_mainpatientlist, container, false);
 
+        pref = getActivity().getSharedPreferences("Registration",0);
+        doc_email = pref.getString("Email","");
 
+        Toast.makeText(getActivity(),doc_email,Toast.LENGTH_SHORT).show();
 
-        final FragmentActivity activity = getActivity();
+        mQueue = CustomVolleyRequestQueue.getInstance(this.getContext()).getRequestQueue();
+
 
         recyclerView = (RecyclerView) rootview.findViewById(R.id.recycleview);
 
@@ -63,7 +89,9 @@ public class PatientListFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
         recyclerView.setAdapter(padapter);
+        get_data();
 
+        patientlist.clear();
 
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getContext(), recyclerView, new ClickListener() {
             @Override
@@ -103,7 +131,7 @@ public class PatientListFragment extends Fragment {
 
             }
         }));
-        patientdata();
+       // patientdata();
 
 
 
@@ -114,7 +142,7 @@ public class PatientListFragment extends Fragment {
     }
 
 
-    private void patientdata(){
+   /* private void patientdata(){
         PatientList patient = new PatientList("Rakesh","Eye patient","2014");
         patientlist.add(patient);
 
@@ -144,6 +172,64 @@ public class PatientListFragment extends Fragment {
 
         padapter.notifyDataSetChanged();
 
+    }*/
+
+
+    private void get_data(){
+        pDialog = new ProgressDialog(getActivity());
+        pDialog.setMessage("Loading List..");
+        pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        pDialog.setCancelable(false);
+        pDialog.setTitle("Connecting to server");
+        pDialog.show();
+
+        JSONObject obj = new JSONObject();
+        try{
+            obj.put("doc_email",doc_email);
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+
+
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.POST, GET_DATA, obj,new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                int len = response.length();
+                JSONArray id,pat_name,pat_prob,pat_year;
+                try{
+                    id = response.getJSONArray(0);
+                    pat_name = response.getJSONArray(1);
+                    pat_prob = response.getJSONArray(2);
+                    pat_year = response.getJSONArray(3);
+
+                    for(int i=0; i< id.length(); i++){
+                        PatientList patient = new PatientList();
+                        patient.setName(pat_name.getString(i));
+                        patient.setDes(pat_prob.getString(i));
+                        patient.setYear(pat_year.getString(i));
+                        patientlist.add(patient);
+                    }
+                }catch(JSONException e){
+                    e.printStackTrace();
+                }
+                padapter.notifyDataSetChanged();
+                pDialog.dismiss();
+                Toast.makeText(getActivity(),"Success", Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                pDialog.dismiss();
+                VolleyLog.e("Error: ", error.getMessage());
+                error.printStackTrace();
+                Toast.makeText(getActivity(),"Some Connection error maybe", Toast.LENGTH_SHORT).show();
+            }
+        });
+        request.setRetryPolicy(new DefaultRetryPolicy(5000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+        mQueue.add(request);
     }
 
     public interface ClickListener{
@@ -177,9 +263,10 @@ public class PatientListFragment extends Fragment {
             });
         }
 
-        public RecyclerTouchListener(Context context, RecyclerView recyclerView, FragmentDrawer.ClickListener clickListener) {
+       /* public RecyclerTouchListener(Context context, RecyclerView recyclerView, FragmentDrawer.ClickListener clickListener) {
 
-        }
+        }*/
+
 
 
         @Override

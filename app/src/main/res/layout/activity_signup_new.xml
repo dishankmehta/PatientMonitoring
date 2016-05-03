@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="vertical"
+    android:background="#3F51B5">
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/dregtext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:textSize="20sp"
+                android:text="Doctor Registration From"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                />
+
+            <LinearLayout
+                android:id="@+id/dlay1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="20dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/dsignup_id"
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="#FFFFFF"
+                    android:hint="Doctor Id"
+                    android:inputType="text"
+                    android:paddingLeft="15dp"
+                    android:textColor="#505050"
+                    android:textSize="25dp"
+                    android:layout_marginTop="30dp"/>
+
+
+                <EditText
+                    android:id="@+id/dsignup_fn"
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/dsignup_id"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:background="#FFFFFF"
+                    android:hint="First Name"
+                    android:inputType="text"
+                    android:paddingLeft="15dp"
+                    android:textColor="#505050"
+                    android:textSize="25dp"
+                    />
+
+
+                <EditText
+                    android:id="@+id/dsignup_ln"
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/dsignup_fn"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:background="#FFFFFF"
+                    android:hint="Last Name"
+                    android:inputType="text"
+                    android:paddingLeft="15dp"
+                    android:textColor="#505050"
+                    android:textSize="25dp"
+                    />
+
+                <EditText
+                    android:id="@+id/dsignup_email"
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/dsignup_ln"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:background="#FFFFFF"
+                    android:hint="E-mail"
+                    android:inputType="text"
+                    android:paddingLeft="15dp"
+                    android:textColor="#505050"
+                    android:textSize="25dp"
+                    />
+
+
+                <EditText
+                    android:id="@+id/dsignup_password"
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/dsignup_email"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:background="#FFFFFF"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:paddingLeft="15dp"
+                    android:textColor="#505050"
+                    android:textSize="25dp"
+                    />
+
+
+                <EditText
+                    android:id="@+id/dsignup_confirm_password"
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/dsignup_password"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:background="#FFFFFF"
+                    android:hint="Confirm Password"
+                    android:inputType="textPassword"
+                    android:paddingLeft="15dp"
+                    android:textColor="#505050"
+                    android:textSize="25dp"
+                    />
+
+                <EditText
+                    android:id="@+id/dsignup_dob"
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/dsignup_password"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:background="#FFFFFF"
+                    android:hint="Date of Birth"
+                    android:inputType="text"
+                    android:paddingLeft="15dp"
+                    android:textColor="#505050"
+                    android:textSize="25dp"
+                    />
+
+                <EditText
+                    android:id="@+id/dsignup_contactno"
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/dsignup_dob"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:background="#FFFFFF"
+                    android:hint="Contact No."
+                    android:inputType="text"
+                    android:paddingLeft="15dp"
+                    android:textColor="#505050"
+                    android:textSize="25dp"
+                    />
+
+                <Button
+                    android:id="@+id/dsignup_btn"
+                    android:layout_width="175dp"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/dsignup_contactno"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:background="#E8E8E8"
+                    android:text="Register"
+                    android:textColor="#3F51B5"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

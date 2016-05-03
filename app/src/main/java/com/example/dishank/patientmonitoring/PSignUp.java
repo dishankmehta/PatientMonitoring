@@ -2,7 +2,7 @@ package com.example.dishank.patientmonitoring;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -14,28 +14,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.example.dishank.patientmonitoring.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
+
+public class PSignUp extends AppCompatActivity implements View.OnClickListener {
 
 
-public class SignUp extends AppCompatActivity implements View.OnClickListener {
-
-
-    EditText fname, lname, semail, pass, cpass, sdob, cno;
+    EditText fname, lname, semail, pass, cpass, sdob, cno, missue, curmed, curissue;
     Button bsignup;
 
     public static final String REGISTER_URL = "http://dmehta22.comli.com/Register.php";
@@ -51,6 +43,9 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     private static String cpassword = null;
     private static String dob = null;
     private static String contactno = null;
+    private static  String med_issue = null;
+    private static  String cur_med = null;
+    private static  String cur_issue = null;
 
     private ProgressDialog pDialog;
     private RequestQueue mQueue;
@@ -69,6 +64,9 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         cpass = (EditText) findViewById(R.id.signup_confirm_password);
         sdob = (EditText) findViewById(R.id.signup_dob);
         cno = (EditText) findViewById(R.id.signup_contactno);
+        missue = (EditText) findViewById(R.id.signup_medissue);
+        curmed = (EditText) findViewById(R.id.signup_curmedi);
+        curissue = (EditText) findViewById(R.id.signup_curissue);
 
         bsignup = (Button) findViewById(R.id.signup_btn);
 
@@ -79,6 +77,12 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         mQueue = CustomVolleyRequestQueue.getInstance(this.getApplicationContext()).getRequestQueue();
 
         get_count();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i5 = new Intent(PSignUp.this,Login.class);
+        startActivity(i5);
     }
 
     @Override
@@ -102,11 +106,14 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         cpassword = cpass.getText().toString().trim();
         dob = sdob.getText().toString().trim();
         contactno = cno.getText().toString().trim();
+        med_issue = missue.getText().toString().trim();
+        cur_med = curmed.getText().toString().trim();
+        cur_issue = curissue.getText().toString().trim();
     }
 
 
     private void verify() {
-        AlertDialog alertDialog = new AlertDialog.Builder(SignUp.this).create();
+        AlertDialog alertDialog = new AlertDialog.Builder(PSignUp.this).create();
         alertDialog.setTitle("Error..!!");
         alertDialog.setMessage("Please fill all the details..!!");
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
@@ -159,7 +166,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                             COUNT = response.getInt("count");
 
                             String msg = "" + COUNT;
-                            Toast.makeText(SignUp.this, msg, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PSignUp.this, msg, Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -181,7 +188,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
     private void insert_data() {
 
-        pDialog = new ProgressDialog(SignUp.this);
+        pDialog = new ProgressDialog(PSignUp.this);
         pDialog.setMessage("Connecting to FTP Server...");
         pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         pDialog.setCancelable(false);
@@ -200,23 +207,24 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             insert.put("lastname", lastname);
             insert.put("email", email);
             insert.put("password", password);
-            insert.put("cpassword", cpassword);
             insert.put("dob", dob);
             insert.put("contactno", contactno);
+            insert.put("med_issue", med_issue);
+            insert.put("cur_med", cur_med);
+            insert.put("cur_issue", cur_issue);
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        final AlertDialog alertDialog = new AlertDialog.Builder(SignUp.this).create();
+        final AlertDialog alertDialog = new AlertDialog.Builder(PSignUp.this).create();
         alertDialog.setTitle("Status");
         alertDialog.setMessage("");
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        finish();
-
+                       // finish();
                     }
                 });
 
@@ -235,7 +243,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                                 alertDialog.show();
                             }
 
-                            Toast.makeText(SignUp.this, msg, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PSignUp.this, msg, Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -247,7 +255,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                 pDialog.dismiss();
                 VolleyLog.e("Error: ", error.getMessage());
                 error.printStackTrace();
-                Toast.makeText(SignUp.this, "Some Connection error maybe", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PSignUp.this, "Some Connection error maybe", Toast.LENGTH_SHORT).show();
                 Log.i("err",error.toString());
             }
         });

@@ -36,6 +36,11 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
                 Intent i = new Intent(HomePage.this, Login.class);
                 startActivity(i);
                 break;
+            case R.id.patient:
+                Intent i1 = new Intent(HomePage.this, Login.class);
+                startActivity(i1);
+                break;
+            case R.id.admin:
         }
     }
 

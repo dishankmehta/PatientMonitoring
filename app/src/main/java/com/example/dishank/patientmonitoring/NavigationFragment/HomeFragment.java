@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,7 @@ import com.example.dishank.patientmonitoring.R;
  */
 public class HomeFragment extends Fragment {
 
-
+    CardView cqoute;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -32,6 +33,9 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+
+       cqoute = (CardView) rootView.findViewById(R.id.cardview);
+
        return rootView;
     }
 

@@ -8,6 +8,15 @@
 #   http://developer.android.com/guide/developing/tools/proguard.html
 
 # Add any project specific keep options here:
+-keep class com.squareup.**{*;}
+-keep public class * extends com.squareup.**{*;}
+-dontwarn com.squareup.**
+
+# Keep methods with Wire annotations (e.g. @ProtoField)
+-keepclassmembers class ** {
+    @com.squareup.wire.ProtoField public *;
+    @com.squareup.wire.ProtoEnum public *;
+}
 
 # If your project uses WebView with JS, uncomment the following
 # and specify the fully qualified class name to the JavaScript interface

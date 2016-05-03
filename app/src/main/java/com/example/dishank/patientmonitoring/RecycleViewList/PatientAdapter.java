@@ -49,6 +49,9 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.MyViewHo
 
     @Override
     public int getItemCount() {
-        return patientlist.size();
+        if (patientlist != null) {
+            return patientlist.size();
+        }
+        return 0;
     }
 }

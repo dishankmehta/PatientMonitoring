@@ -1,17 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Quote"
-        android:textSize="40sp"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="50dp"/>
+    <android.support.v7.widget.CardView
+        android:layout_centerHorizontal="true"
+        android:id="@+id/cardview"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        cardview:cardCornerRadius="4dp"
+        android:layout_marginTop="30dp"
+        cardview:cardElevation="6dp"
+        cardview:cardUseCompatPadding="true"
+        >
+
+        <RelativeLayout
+            android:id="@+id/cardrelative"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/cardtext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quote"
+            android:textSize="40sp"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="50dp"/>
+
+        <TextView
+            android:id="@+id/textauthor"
+            android:layout_below="@+id/cardtext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="-Author"
+            android:gravity="right"
+            android:layout_marginRight="5dp"/>
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
 
 
 </RelativeLayout>

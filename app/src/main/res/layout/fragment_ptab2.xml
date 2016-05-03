@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relative1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <TextView
+        android:id="@+id/titlep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter your medical details"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:layout_marginTop="30dp"/>
+
+
+    <EditText
+        android:id="@+id/feverentry"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titlep"
+        android:layout_marginLeft="45dp"
+        android:paddingTop="40dp"
+        android:hint="Enter Temperature"/>
+
+    <EditText
+        android:id="@+id/bpentry"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/feverentry"
+        android:paddingTop="35dp"
+        android:layout_marginLeft="45dp"
+        android:hint="Enter Blood Pressure"/>
+
+    <EditText
+        android:id="@+id/sugarentry"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bpentry"
+        android:layout_marginLeft="45dp"
+        android:paddingTop="35dp"
+        android:hint="Enter Sugar Level"/>
+
+
+    <Button
+        android:id="@+id/enterb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sugarentry"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="35dp"
+        android:text="Submit"/>
+
+</RelativeLayout>

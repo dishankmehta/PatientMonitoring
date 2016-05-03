@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:scrollbars="vertical"
     android:background="#3F51B5">
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/regtext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:textSize="20sp"
+            android:text="Patient Registration From"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            />
 
         <LinearLayout
             android:id="@+id/lay1"
@@ -24,7 +31,6 @@
                 android:id="@+id/signup_id"
                 android:layout_width="fill_parent"
                 android:layout_height="60dp"
-                android:layout_centerHorizontal="true"
                 android:background="#FFFFFF"
                 android:hint="Patient Id"
                 android:inputType="text"
@@ -38,8 +44,6 @@
                 android:id="@+id/signup_fn"
                 android:layout_width="fill_parent"
                 android:layout_height="60dp"
-                android:layout_below="@+id/signup_id"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:background="#FFFFFF"
                 android:hint="First Name"
@@ -54,8 +58,6 @@
                 android:id="@+id/signup_ln"
                 android:layout_width="fill_parent"
                 android:layout_height="60dp"
-                android:layout_below="@+id/signup_fn"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:background="#FFFFFF"
                 android:hint="Last Name"
@@ -69,12 +71,10 @@
                 android:id="@+id/signup_email"
                 android:layout_width="fill_parent"
                 android:layout_height="60dp"
-                android:layout_below="@+id/signup_ln"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:background="#FFFFFF"
                 android:hint="E-mail"
-                android:inputType="text"
+                android:inputType="textEmailAddress"
                 android:paddingLeft="15dp"
                 android:textColor="#505050"
                 android:textSize="25dp"
@@ -85,8 +85,6 @@
                 android:id="@+id/signup_password"
                 android:layout_width="fill_parent"
                 android:layout_height="60dp"
-                android:layout_below="@+id/signup_email"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:background="#FFFFFF"
                 android:hint="Password"
@@ -101,8 +99,6 @@
                 android:id="@+id/signup_confirm_password"
                 android:layout_width="fill_parent"
                 android:layout_height="60dp"
-                android:layout_below="@+id/signup_password"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:background="#FFFFFF"
                 android:hint="Confirm Password"
@@ -116,8 +112,6 @@
                 android:id="@+id/signup_dob"
                 android:layout_width="fill_parent"
                 android:layout_height="60dp"
-                android:layout_below="@+id/signup_password"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:background="#FFFFFF"
                 android:hint="Date of Birth"
@@ -131,8 +125,6 @@
                 android:id="@+id/signup_contactno"
                 android:layout_width="fill_parent"
                 android:layout_height="60dp"
-                android:layout_below="@+id/signup_dob"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:background="#FFFFFF"
                 android:hint="Contact No."
@@ -142,12 +134,54 @@
                 android:textSize="25dp"
                  />
 
+
+            <EditText
+                android:id="@+id/signup_medissue"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:background="#FFFFFF"
+                android:hint="Medical Issues"
+                android:maxLines="6"
+                android:inputType="textMultiLine"
+                android:paddingLeft="15dp"
+                android:textColor="#505050"
+                android:textSize="25dp"
+                />
+
+            <EditText
+                android:id="@+id/signup_curmedi"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:background="#FFFFFF"
+                android:hint="Current Medicines"
+                android:maxLines="6"
+                android:inputType="textMultiLine"
+                android:paddingLeft="15dp"
+                android:textColor="#505050"
+                android:textSize="25dp"
+                />
+
+            <EditText
+                android:id="@+id/signup_curissue"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:background="#FFFFFF"
+                android:hint="Current Issues"
+                android:maxLines="6"
+                android:inputType="textMultiLine"
+                android:paddingLeft="15dp"
+                android:textColor="#505050"
+                android:textSize="25dp"
+                />
+
+
             <Button
                 android:id="@+id/signup_btn"
                 android:layout_width="175dp"
                 android:layout_height="60dp"
-                android:layout_below="@+id/signup_contactno"
-                android:layout_centerHorizontal="true"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp"
                 android:background="#E8E8E8"
@@ -159,7 +193,8 @@
         </LinearLayout>
 
 
-    </RelativeLayout>
-    </android.support.v4.widget.NestedScrollView>
+
+
 
 </android.support.design.widget.CoordinatorLayout>
+</ScrollView>
