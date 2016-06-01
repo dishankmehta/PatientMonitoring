@@ -173,6 +173,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             if(i==1){
                                 //COUNT = response.getInt("count");
                                 if(j==1) {
+                                    editor.putString("EmailP",username);
+                                    editor.commit();
                                     Intent i4 = new Intent(Login.this, PatientNavigation.class);
                                     finish();
                                     startActivity(i4);
@@ -207,6 +209,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         super.onStop();
 
         finish();
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 
     @Override

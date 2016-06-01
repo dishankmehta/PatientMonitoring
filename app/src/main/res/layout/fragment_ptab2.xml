@@ -15,12 +15,21 @@
         android:gravity="center"
         android:layout_marginTop="30dp"/>
 
+    <EditText
+        android:id="@+id/nameentry"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titlep"
+        android:layout_marginLeft="45dp"
+        android:paddingTop="40dp"
+        android:hint="Enter Name"/>
+
 
     <EditText
         android:id="@+id/feverentry"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/titlep"
+        android:layout_below="@+id/nameentry"
         android:layout_marginLeft="45dp"
         android:paddingTop="40dp"
         android:hint="Enter Temperature"/>

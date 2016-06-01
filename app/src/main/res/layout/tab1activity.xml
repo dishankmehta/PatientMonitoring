@@ -49,6 +49,16 @@
             android:text="Medical Issues:"
             android:textSize="20sp"/>
 
+            <TextView
+                android:id="@+id/issue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="10dp"
+                android:text="Issues:"
+                android:textSize="20sp"/>
+
+
         </android.support.v7.widget.CardView>
 
 
@@ -71,6 +81,15 @@
                 android:text="Ongoing medicines:"
                 android:textSize="20sp"/>
 
+            <TextView
+                android:id="@+id/medi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="10dp"
+                android:text="Medicines:"
+                android:textSize="20sp"/>
+
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
@@ -90,6 +109,15 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="5dp"
                 android:text="Recent Problems:"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/prob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="10dp"
+                android:text="Problem:"
                 android:textSize="20sp"/>
 
         </android.support.v7.widget.CardView>

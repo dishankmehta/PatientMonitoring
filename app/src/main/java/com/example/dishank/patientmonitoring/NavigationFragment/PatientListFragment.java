@@ -56,8 +56,9 @@ public class PatientListFragment extends Fragment {
     private PatientAdapter padapter;
     private Dialog dialog;
     String doc_email;
-    String pname,pprob,pyear;
-    SharedPreferences pref;
+    String name;
+    SharedPreferences pref,pref1;
+    SharedPreferences.Editor editor1;
 
 
     private ProgressDialog pDialog;
@@ -72,6 +73,9 @@ public class PatientListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.fragment_mainpatientlist, container, false);
+
+        pref1 = getActivity().getSharedPreferences("EPass",0);
+        editor1 = pref1.edit();
 
         pref = getActivity().getSharedPreferences("Registration",0);
         doc_email = pref.getString("Email","");
@@ -97,6 +101,10 @@ public class PatientListFragment extends Fragment {
             @Override
             public void onClick(View view, int position) {
                 PatientList patient = patientlist.get(position);
+                name = patient.getName();
+                editor1.putString("Name",name);
+                editor1.commit();
+                Toast.makeText(getActivity(), name, Toast.LENGTH_SHORT).show();
                 Toast.makeText(getContext(), patient.getName() + " is selected!", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(getContext(), TabMain.class);
                 startActivity(i);
@@ -135,11 +143,9 @@ public class PatientListFragment extends Fragment {
 
 
 
-
-
-
         return rootview;
     }
+
 
 
    /* private void patientdata(){

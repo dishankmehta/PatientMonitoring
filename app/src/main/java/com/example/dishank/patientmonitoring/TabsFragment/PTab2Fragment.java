@@ -4,6 +4,7 @@ package com.example.dishank.patientmonitoring.TabsFragment;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -30,7 +31,7 @@ import org.json.JSONObject;
  */
 public class PTab2Fragment extends Fragment implements View.OnClickListener {
 
-    EditText temp,bloodp,sugar;
+    EditText name,temp,bloodp,sugar;
     Button benter;
 
     private static final String MEDDATA_URL = "http://dmehta22.comli.com/med_data.php";
@@ -41,9 +42,13 @@ public class PTab2Fragment extends Fragment implements View.OnClickListener {
     private static String Temp = null;
     private static String Bloodp = null;
     private static String Sugar = null;
+    private static String Name = null;
 
     private ProgressDialog pDialog;
     private RequestQueue mQueue;
+
+    SharedPreferences pref;
+    String pat_email;
 
 
     public PTab2Fragment() {
@@ -56,6 +61,7 @@ public class PTab2Fragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_ptab2, container, false);
 
+        name = (EditText) rootView.findViewById(R.id.nameentry);
         temp = (EditText) rootView.findViewById(R.id.feverentry);
         bloodp = (EditText) rootView.findViewById(R.id.bpentry);
         sugar = (EditText) rootView.findViewById(R.id.sugarentry);
@@ -63,6 +69,9 @@ public class PTab2Fragment extends Fragment implements View.OnClickListener {
         benter = (Button) rootView.findViewById(R.id.enterb);
 
         benter.setOnClickListener(this);
+
+        pref = getActivity().getSharedPreferences("Registration",0);
+        pat_email = pref.getString("EmailP","");
 
         mQueue = CustomVolleyRequestQueue.getInstance(this.getActivity()).getRequestQueue();
 
@@ -86,6 +95,7 @@ public class PTab2Fragment extends Fragment implements View.OnClickListener {
     }
 
     public void set(){
+        Name = name.getText().toString().trim();
         Temp = temp.getText().toString().trim();
         Bloodp = bloodp.getText().toString().trim();
         Sugar = sugar.getText().toString().trim();
@@ -103,7 +113,10 @@ public class PTab2Fragment extends Fragment implements View.OnClickListener {
                     }
                 });
 
-        if(Temp.equals("")){
+        if(Name.equals("")){
+            alertDialog.setMessage("Enter name..!!");
+            alertDialog.show();
+        }else if(Temp.equals("")){
             alertDialog.setMessage("Enter temperature..!!");
             alertDialog.show();
         }else if(Bloodp.equals("")){
@@ -166,6 +179,8 @@ public class PTab2Fragment extends Fragment implements View.OnClickListener {
         JSONObject insert = new JSONObject();
         try {
             insert.put("eid", COUNT + 1);
+            insert.put("email",pat_email);
+            insert.put("pname",Name);
             insert.put("ptemp", Temp);
             insert.put("pbloodp", Bloodp);
             insert.put("psugar", Sugar);

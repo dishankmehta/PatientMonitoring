@@ -13,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.dishank.patientmonitoring.Login;
 import com.example.dishank.patientmonitoring.R;
 import com.example.dishank.patientmonitoring.RecycleViewList.DividerItemDecoration;
 import com.example.dishank.patientmonitoring.SettingsAdapter;
@@ -54,8 +56,9 @@ public class SettingsFragment extends Fragment {
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getContext(), recyclerView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                SettingsList setting = settingsList.get(position);
-
+                //SettingsList setting = settingsList.get(position);
+                Intent i = new Intent(getActivity(), Login.class);
+                startActivity(i);
             }
 
             @Override
@@ -72,7 +75,7 @@ public class SettingsFragment extends Fragment {
 
 
     private void settingsdata(){
-        SettingsList settings = new SettingsList(R.drawable.ic_settings_black_24dp, "Settings");
+        SettingsList settings = new SettingsList(R.drawable.ic_power_settings_new_black_24dp, "Logout");
         settingsList.add(settings);
     }
 

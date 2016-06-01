@@ -26,10 +26,10 @@
             android:id="@+id/cardtext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Quote"
-            android:textSize="40sp"
+            android:text="A half doctor near is better than a whole one far away "
+            android:textSize="35sp"
             android:gravity="center_horizontal"
-            android:layout_marginTop="50dp"/>
+            android:layout_marginTop="20dp"/>
 
         <TextView
             android:id="@+id/textauthor"

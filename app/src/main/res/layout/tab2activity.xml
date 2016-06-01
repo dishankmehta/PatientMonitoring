@@ -1,13 +1,60 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.dishank.patientmonitoring.TabsFragment.PTab2Fragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/titlepnew"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Patient Details"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:id="@+id/pname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titlepnew"
+        android:text="Patient Name"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:id="@+id/temp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pname"
+        android:text="Temperature"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_marginTop="30dp"/>
+
+
+    <TextView
+        android:id="@+id/blood"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/temp"
+        android:text="Blood Pressure"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_marginTop="30dp"/>
+
+
+    <TextView
+        android:id="@+id/sugar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/blood"
+        android:text="Sugar"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_marginTop="30dp"/>
+
+
+</RelativeLayout>
